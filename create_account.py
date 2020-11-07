@@ -12,7 +12,7 @@ class CreateAccount(MyAccount):
     def create_account(self, name, password, address, age, balance):
         available = False
         while not available:
-            account_number = random.randint(111111, 999999)
+            account_number = str(random.randint(111111, 999999))
             data = self.get_data("account_details.json")
 
             if account_number not in data.keys():

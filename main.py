@@ -9,7 +9,8 @@ def main():
     choice = input("=> ")
 
     if choice.lower() == "register":
-        # To create a new account we use the following class and syntax
+
+        # Loop for checking that the user inputs correct data
         register_acc = True
         while register_acc:
             user_name = input("Name: ")
@@ -40,7 +41,7 @@ Please make note of it of it now.
 
                     if (
                         confirmation.isdigit()
-                        and int(confirmation) == user_register.account_number
+                        and confirmation == user_register.account_number
                     ):
                         print("Account confirmed!\nRedirecting...")
                         time.sleep(5)
@@ -56,7 +57,7 @@ Please make note of it of it now.
                 print("Invalid details.\nPlease try again!")
 
     elif choice.lower() == "login":
-        # To login to our account we just use
+
         logging_in = True
         while logging_in:
             username = input("Account No: ")
@@ -158,6 +159,7 @@ Please note we cannot show you your current password for security reasons."""
 
 
 if __name__ == "__main__":
+    # Used to clear the terminal when the program is ran
     os.system("cls" if os.name == "nt" else "clear")
     print("-=BANK=-")
     main()

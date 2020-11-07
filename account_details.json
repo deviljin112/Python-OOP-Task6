@@ -1,8 +1,8 @@
 {
-    "272543": {
+    "540292": {
         "Address": "100 Main Road",
         "Age": 99,
-        "Balance": 100,
-        "Name": "Sample"
+        "Balance": 100.0,
+        "Name": "John"
     }
 }

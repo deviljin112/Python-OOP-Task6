@@ -6,6 +6,7 @@
   - [Table of contents](#table-of-contents)
   - [Task](#task)
   - [Functionality](#functionality)
+  - [Sample Account](#sample-account)
   - [Explanation](#explanation)
   - [Code explanation](#code-explanation)
     - [Persistent data](#persistent-data)
@@ -42,6 +43,15 @@ Fully functioning banking system:
 - Data saved as JSON can be easily modified for CSV or SQL
 - Menu system (for user options)
 - Works on both Windows and Unix-based
+
+## Sample Account
+
+To test out the code, feel free to use the sample account already created, or register your own!
+
+```md
+account number: 540292
+password: sample
+```
 
 ## Explanation
 
