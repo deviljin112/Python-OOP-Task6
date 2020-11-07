@@ -1,5 +1,19 @@
 # Bank
 
+## Table of contents
+
+- [Bank](#bank)
+  - [Table of contents](#table-of-contents)
+  - [Task](#task)
+  - [Functionality](#functionality)
+  - [Explanation](#explanation)
+  - [Code explanation](#code-explanation)
+    - [Persistent data](#persistent-data)
+    - [Password Hashing](#password-hashing)
+    - [Login and Registration](#login-and-registration)
+      - [Register](#register)
+      - [Login](#login)
+
 ## Task
 
 - Create an AccountHolderDetails class with attributes name, address, age
@@ -29,7 +43,7 @@ Fully functioning banking system:
 - Menu system (for user options)
 - Works on both Windows and Unix-based
 
-### Explanation
+## Explanation
 
 Persistent data is achieved through the use of JSON files. Although these are easily accesible, and can view all the user details, it is used for proof-of-concept. This should be revised with the use of SQL db for security.
 </br>
@@ -39,9 +53,9 @@ Menu system allows the user to easily select the available options, see their de
 </br>
 Multiplatform. With the help of `os` module we can easily implement functionality that works on all operating systems. As this program only runs in the terminal, the functionality was simply `cls` / `clear` for ease of formatting and clarity.
 
-### Code explanation
+## Code explanation
 
-#### Persistent data
+### Persistent data
 
 To achieve persistent data with JSON we need to work in a dictionary format. We can use the `with open(<file>, <permission>) as <variable>:` to access our .json file, with either read (`'r'`) or write (`'w'`) permissions. Since we want the data to be persistent we need both a get and save function. We also will have 2 seperate files one with the account data, one with password storage. Because we want to keep our code DRY we will use variables to state which file we want to access and save.
 </br>
@@ -65,7 +79,7 @@ def constructor(self, file, new_data):
 
 To ensure no data is lost. Although not the most efficient, we will be saving our data to json whenever a user alters their data. For example, when a user deposits any amount, we will first use `get_data` to create a `data` dictionary that will be passed to a `deposit()` function which will directly alter the amount of money the person has in their account. After their balance has been altered it will trigger the `constructor()` function to save the data instantly. `json.load(<variable>)` lets us load the json file into a python dictionary. While `json.dump(<new_data>, <variable>, <other_arguments>)` allows us to save the data with specific arguments. In our case, we want the JSON file to be readble, hence why I've used `indent` and `sort_keys` which is self-explanatory.
 
-#### Password Hashing
+### Password Hashing
 
 There are two functions involved with password hashing:
 
@@ -104,9 +118,9 @@ def checkhash(self, stored_pwd, given_pwd):
     return pass_hash == stored_pwd
 ```
 
-#### Login and Registration
+### Login and Registration
 
-##### Register
+#### Register
 
 In order to `Login` we need to have an existing account. To create an account we have a `Register` class. Our `CreateAccount` class extends the `MyAccount` class. `MyAccount` class stores all the account management functionality, such as balance, deposit, withdraw, hashing and opening json files. It's the main file that acts as the manager.
 </br>
@@ -161,7 +175,7 @@ def create_account(self, name, password, address, age, balance):
 
 After getting a unique account number we can inherit all the data by filling in the variables inside the `super().__init__()` to inherit all the variables with filled in data.
 
-##### Login
+#### Login
 
 `Login` class has similar approach to `Registration`. We inherit the `MyAccount` Class, and create a variable that will store all the `user_data`. This user data is pulled from our JSON file, opposed to adding it to JSON in the case of `Register`. In order to trigger the `get_data()` function, we first need to check if the login and password is correct.
 </br>
