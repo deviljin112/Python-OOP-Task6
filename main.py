@@ -75,10 +75,14 @@ Please make note of it of it now.
             username = input("Account No: ")
             password = input("Password: ")
 
+            # Try Catch is used to control the error handling
+            # Since the login uses the `raise Exception()` if the login is unsuccesful we can catch that error and allow the user another attempt
             try:
+                # Creates an instance of the Login class
                 user_login = Login(username, password)
             except:
                 print("Incorrect details provided!\nPlease try again")
+            # If there is no error proceed with the code, i.e. assume the user logged in successfully
             else:
                 print("Logging in Successful!\nRedirecting...")
                 time.sleep(5)
@@ -90,6 +94,7 @@ Please make note of it of it now.
         print("That is not a valid option!")
 
 
+# Menu logic, where logged in user will perform their account actions
 def main_menu(user_object):
     while True:
         print(
@@ -142,6 +147,8 @@ Please note we cannot show you your current password for security reasons."""
                 print("Please input the amount.")
                 amount = input("=> ")
 
+                # Because the amount can have a decimal we need to Try Catch an attempt at making `amount` a float
+                # Instead of using .isdigit()
                 try:
                     amount = float(amount)
                 except:
@@ -171,7 +178,8 @@ Please note we cannot show you your current password for security reasons."""
 
 
 if __name__ == "__main__":
-    # Used to clear the terminal when the program is ran
+    # Used to clear the terminal when the program is ran for astetics
     os.system("cls" if os.name == "nt" else "clear")
     print("-=BANK=-")
+    # Starts the program
     main()

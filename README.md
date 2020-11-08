@@ -1,9 +1,9 @@
 # Bank
 
-## Table of contents
+## Table of Contents
 
 - [Bank](#bank)
-  - [Table of contents](#table-of-contents)
+  - [Table of Contents](#table-of-contents)
   - [Task](#task)
   - [Functionality](#functionality)
   - [Sample Account](#sample-account)
@@ -14,6 +14,8 @@
     - [Login and Registration](#login-and-registration)
       - [Register](#register)
       - [Login](#login)
+    - [Main Menu](#main-menu)
+  - [To Do](#to-do)
 
 ## Task
 
@@ -39,7 +41,7 @@ Fully functioning banking system:
 - Deposit
 - Withdraw
 - User Details
-- Hashing passwords using SHA256
+- Hashing passwords using SHA512 for maximum security
 - Data saved as JSON can be easily modified for CSV or SQL
 - Menu system (for user options)
 - Works on both Windows and Unix-based
@@ -234,3 +236,17 @@ try:
 except:
     print("Incorrect details provided!\nPlease try again")
 ```
+
+### Main Menu
+
+The main menu has multiple options that you would expect from a bank interface. Seeing your balance, depositing money or withdrawing money. The `main_menu()` function takes an argument of `user_object` this object is either going to be the `Login` class or the `CreateAccount` class. Since both classes extend `MyAccount` class, they both inherit all the functionality. The main difference is how they inherit the data. Both classes as explored in the previous chapter, first create a variable that calls a function which in turn returns the neccessary information for inheritance to occur.
+</br>
+Since both classes are theoretically the same, the methods and variables can be called the same way. Ensuring that our data is uniform and the code dynamic. Through this inheritance we have a tree diagram where `MyAccount` is the key class with majority of the logic and variables that control the flow of data and actions. While the `Login` and `CreateAccount` are two seperate branches that based on different conditions, if they fulfilled they clone an instance of `MyAccount` with all the correct data filled.
+
+## To Do
+
+- [ ] Add transfering money between accounts
+- [ ] Change personal details
+- [ ] Add email address and phone number as required
+- [ ] More checks on what data is used for account creation
+- [ ] Bug fix negative numbers as inputs
