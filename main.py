@@ -1,5 +1,10 @@
+# Module time is used for the .sleep() function which simulates loading
 import time
+
+# Module os is used for .system() to clear the terminal
 import os
+
+# Imports all the classes
 from create_account import CreateAccount
 from login import Login
 
@@ -19,9 +24,12 @@ def main():
             user_age = input("Age: ")
             user_balance = input("First Deposit Amount: ")
 
+            # Checks if input is an integer
             if user_age.isdigit() and user_balance.isdigit():
+                # Multi assignment used to make inputs an int and float respectively
                 user_age, user_balance = int(user_age), float(user_balance)
 
+                # Creates an instance of the CreateAccount class
                 user_register = CreateAccount(
                     user_name, user_pass, user_addr, user_age, user_balance
                 )
@@ -34,6 +42,7 @@ Please make note of it of it now.
 """
                 )
 
+                # Loop to confirm users account number (for security)
                 while True:
                     confirmation = input(
                         "Please confirm your account number before continuing.\n=> "
@@ -44,12 +53,15 @@ Please make note of it of it now.
                         and confirmation == user_register.account_number
                     ):
                         print("Account confirmed!\nRedirecting...")
+                        # time.sleep() simulates loading giving the user time to read the prompts
                         time.sleep(5)
+                        # Used to clear the terminal to reduce clutter
                         os.system("cls" if os.name == "nt" else "clear")
                         break
                     else:
                         print("Account number doesn't match.\nPlease try again!")
 
+                # After all the above code main menu is opened
                 main_menu(user_register)
 
                 register_acc = False
